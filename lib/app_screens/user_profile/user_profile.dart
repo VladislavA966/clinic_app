@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/app_fonts.dart';
-import 'package:flutter_application_6/app_screens/custom_button.dart';
+import 'package:flutter_application_6/custom_button.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -58,10 +58,8 @@ class UserProfile extends StatelessWidget {
               },
             ),
             CustomButton(
-              width: 296,
-              height: 54,
               text: 'Войти',
-              color: Color(0xff4A86CC),
+              onPressed: () {},
             ),
           ],
         ),

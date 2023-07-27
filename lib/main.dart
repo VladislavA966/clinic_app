@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'app_screens/homepage_screen/home_page.dart';
-import 'app_screens/user_profile/user_profile.dart';
+import 'package:flutter_application_6/app_screens/user_auth_screens/name_auth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme:
+            const AppBarTheme(backgroundColor: Colors.white, elevation: 2),
+      ),
       debugShowCheckedModeBanner: false,
-      home: UserProfile(),
+      home: UserAuthScreen(),
     );
   }
 }
