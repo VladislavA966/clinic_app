@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_fonts.dart';
-import 'package:flutter_application_6/app_screens/custom_button.dart';
+import 'package:flutter_application_6/presenatiton/resources/colors/app_colors.dart';
+import 'package:flutter_application_6/presenatiton/resources/fonts/app_fonts.dart';
+import 'package:flutter_application_6/presenatiton/pages/user_auth_screens/name_auth_screen.dart';
+import 'package:flutter_application_6/presenatiton/widgets/custom_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PinAuthScreeen extends StatefulWidget {
@@ -30,13 +32,20 @@ class _PinAuthScreeenState extends State<PinAuthScreeen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back_ios_new,
-            color: Color(0xff007AFF),
+            color: AppColors.blue,
           ),
         ),
-        title: const Text('Подтверждение номера', style: AppFonts.w600s17),
+        title: Text(
+          'Подтверждение номера',
+          style: AppFonts.w600s17.copyWith(
+            color: AppColors.black,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -46,7 +55,12 @@ class _PinAuthScreeenState extends State<PinAuthScreeen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const SizedBox(height: 25),
-              const Text('Введите код из смс', style: AppFonts.w500s22),
+              Text(
+                'Введите код из смс',
+                style: AppFonts.w500s22.copyWith(
+                  color: AppColors.grey,
+                ),
+              ),
               const SizedBox(height: 178),
               TextField(
                 obscureText: true,
@@ -57,33 +71,35 @@ class _PinAuthScreeenState extends State<PinAuthScreeen> {
                 decoration: InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xff979797),
+                      color: AppColors.lightGrey,
                       width: 2,
                     ),
                   ),
                   prefix: Text(
                     'Код',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff333333),
-                    ),
+                    style:
+                        AppFonts.w600s18.copyWith(color: AppColors.lightGrey),
                   ),
                   suffix: IconButton(
                     onPressed: () {},
                     icon: Icon(
                       Icons.close,
-                      color: Color(0xff333333),
+                      color: AppColors.grey,
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 24),
               TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: TextStyle(decoration: TextDecoration.underline),
+                ),
                 onPressed: () {},
                 child: Text(
-                  'Получить код еще раз',
-                  style: AppFonts.w400s15,
+                  'Получить код повторно',
+                  style: AppFonts.w400s15.copyWith(
+                    color: AppColors.blue,
+                  ),
                 ),
               ),
               const SizedBox(height: 70),
@@ -93,7 +109,12 @@ class _PinAuthScreeenState extends State<PinAuthScreeen> {
                   final prefs = await SharedPreferences.getInstance();
                   prefs.setString('pin', pin.text);
                   userPin = prefs.getString('pin') ?? '';
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserAuthScreen(),
+                    ),
+                  );
                   setState(() {});
                 },
               ),

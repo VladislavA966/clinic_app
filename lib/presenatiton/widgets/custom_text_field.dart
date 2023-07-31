@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_fonts.dart';
+import 'package:flutter_application_6/presenatiton/resources/fonts/app_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;

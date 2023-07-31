@@ -1,8 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_fonts.dart';
-import 'package:flutter_application_6/custom_button.dart';
+import 'package:flutter_application_6/presenatiton/resources/colors/app_colors.dart';
+import 'package:flutter_application_6/presenatiton/resources/fonts/app_fonts.dart';
+import 'package:flutter_application_6/presenatiton/pages/user_auth_screens/pin_auth_screeen.dart';
+import 'package:flutter_application_6/presenatiton/widgets/custom_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PhoneAuthScreen extends StatefulWidget {
@@ -31,16 +31,20 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Войти',
-          style: AppFonts.w600s17,
+          style: AppFonts.w600s17.copyWith(
+            color: AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(
             Icons.close,
-            color: Colors.black.withOpacity(0.54),
+            color: AppColors.black.withOpacity(0.54),
           ),
         ),
       ),
@@ -51,30 +55,48 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
           children: [
             Text(
               'Войти',
-              style: AppFonts.w700s34,
+              style: AppFonts.w700s34.copyWith(
+                color: AppColors.grey,
+              ),
               textAlign: TextAlign.start,
             ),
             const SizedBox(height: 49),
-            Text('Номер телефона', style: AppFonts.w400s15),
+            Text(
+              'Номер телефона',
+              style: AppFonts.w400s15.copyWith(
+                color: AppColors.grey,
+              ),
+            ),
             TextField(
+              maxLength: 9,
               controller: phone,
               keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xFF333333),
+                      color: AppColors.grey,
                       width: 2,
                     ),
                   ),
-                  prefix: Text('0', style: AppFonts.w700s17),
-                  hintStyle: AppFonts.w700s17,
+                  prefix: Text(
+                    '0',
+                    style: AppFonts.w700s17.copyWith(
+                      color: AppColors.grey,
+                    ),
+                  ),
+                  hintStyle: AppFonts.w700s17.copyWith(
+                    color: AppColors.grey,
+                  ),
                   hintText: '_ _ _  _ _  _ _'),
             ),
             const SizedBox(height: 15),
-            const Flexible(
+            Flexible(
               child: Text(
                 'На указанный вами номер придет однократное СМС-сообщение с кодом подтверждения.',
-                style: AppFonts.w400s15,
+                style: AppFonts.w400s15
+                  ..copyWith(
+                    color: AppColors.grey,
+                  ),
               ),
             ),
             const SizedBox(height: 104),
@@ -84,6 +106,8 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setString('phone', phone.text);
                 userPhone = prefs.getString('phone') ?? '';
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PinAuthScreeen()));
 
                 setState(() {});
               },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_fonts.dart';
-import 'package:flutter_application_6/custom_button.dart';
+import 'package:flutter_application_6/presenatiton/resources/colors/app_colors.dart';
+import 'package:flutter_application_6/presenatiton/resources/fonts/app_fonts.dart';
+import 'package:flutter_application_6/presenatiton/pages/user_auth_screens/phone_auth_screen.dart';
+import 'package:flutter_application_6/presenatiton/widgets/custom_button.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -18,22 +20,21 @@ class UserProfile extends StatelessWidget {
           'Получайте уведомления о приеме или оп оступивших сообщениях'),
     ];
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        shadowColor: Colors.white,
-        title: const Text(
+        shadowColor: AppColors.white,
+        title: Text(
           'Профиль',
-          style: TextStyle(
-              color: Colors.black, fontSize: 17, fontWeight: FontWeight.w600),
+          style: AppFonts.w600s17.copyWith(color: AppColors.black),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.settings,
-              color: Colors.black,
+              color: AppColors.black,
             ),
           ),
         ],
@@ -45,7 +46,7 @@ class UserProfile extends StatelessWidget {
             const Text(
               'Зачем нужен профиль?',
               style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.black,
                   fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
@@ -59,7 +60,14 @@ class UserProfile extends StatelessWidget {
             ),
             CustomButton(
               text: 'Войти',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PhoneAuthScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),

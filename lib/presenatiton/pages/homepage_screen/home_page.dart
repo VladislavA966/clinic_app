@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_6/app_screens/user_auth_screens/name_auth_screen.dart';
+import 'package:flutter_application_6/app_screens/user_auth_screens/phone_auth_screen.dart';
+import 'package:flutter_application_6/app_screens/user_auth_screens/pin_auth_screeen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,23 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  List<Widget> widgets = [
-    Center(
-      child: Text(
-        'Index 1',
-        style: TextStyle(fontSize: 50),
-      ),
-    ),
-    Center(
-      child: Text('Index 2', style: TextStyle(fontSize: 50)),
-    ),
-    Center(
-      child: Text('Index 3', style: TextStyle(fontSize: 50)),
-    ),
-    Center(
-      child: Text('Index 4', style: TextStyle(fontSize: 50)),
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  '+996 555 78 65 65',
+                  '+996 555 55 55 55',
                   style: TextStyle(
                     color: Color(0xFF333333),
                     fontSize: 18,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_fonts.dart';
-import 'package:flutter_application_6/custom_button.dart';
-import 'package:flutter_application_6/custom_text_field.dart';
+import 'package:flutter_application_6/presenatiton/resources/colors/app_colors.dart';
+import 'package:flutter_application_6/presenatiton/resources/fonts/app_fonts.dart';
+import 'package:flutter_application_6/presenatiton/pages/homepage_screen/home_page.dart';
+import 'package:flutter_application_6/presenatiton/widgets/custom_button.dart';
+import 'package:flutter_application_6/presenatiton/widgets/custom_text_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserAuthScreen extends StatefulWidget {
@@ -38,16 +40,20 @@ class _UserAuthScreenState extends State<UserAuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Войти',
-          style: AppFonts.w600s17,
+          style: AppFonts.w600s17.copyWith(
+            color: AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(
             Icons.close,
-            color: Colors.black.withOpacity(0.54),
+            color: AppColors.black.withOpacity(0.54),
           ),
         ),
       ),
@@ -56,10 +62,20 @@ class _UserAuthScreenState extends State<UserAuthScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Имя', style: AppFonts.w400s15),
+            Text(
+              'Имя',
+              style: AppFonts.w400s15.copyWith(
+                color: AppColors.grey,
+              ),
+            ),
             CustomTextField(hintText: 'Введите ваше имя', controller: name),
             const SizedBox(height: 32),
-            Text('Фамилия', style: AppFonts.w400s15),
+            Text(
+              'Фамилия',
+              style: AppFonts.w400s15.copyWith(
+                color: AppColors.grey,
+              ),
+            ),
             CustomTextField(
               hintText: 'Введите вашу фамилию',
               controller: surname,
@@ -73,6 +89,12 @@ class _UserAuthScreenState extends State<UserAuthScreen> {
                 prefs.setString('surname', surname.text);
                 userName = prefs.getString('name') ?? '';
                 userSurname = prefs.getString('surname') ?? '';
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
 
                 setState(() {});
               },
