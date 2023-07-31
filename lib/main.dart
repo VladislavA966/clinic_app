@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/app_screens/user_auth_screens/name_auth_screen.dart';
+import 'package:flutter_application_6/presenatiton/pages/user_auth_screens/user_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
             const AppBarTheme(backgroundColor: Colors.white, elevation: 2),
       ),
       debugShowCheckedModeBanner: false,
-      home: UserAuthScreen(),
+      home: UserProfile(),
     );
   }
 }
